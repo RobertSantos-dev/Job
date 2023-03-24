@@ -4,11 +4,11 @@ from src.insights.jobs import read
 
 def get_unique_industries(path: str) -> List[str]:
     """Checks all different industries and returns a list of them"""
-    return_from_list_of_industries = read(path)
+    return_from_list_of_jobs = read(path)
     set_of_industry = set()
     list_converted_from_set = []
 
-    for industry in return_from_list_of_industries:
+    for industry in return_from_list_of_jobs:
         if(industry['industry'] != ''):
             set_of_industry.add(industry['industry'])
 
