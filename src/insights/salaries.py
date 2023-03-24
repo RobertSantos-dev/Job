@@ -20,8 +20,19 @@ def get_max_salary(path: str) -> int:
 
 
 def get_min_salary(path: str) -> int:
-    """Get the minimum salary of all jobs
+    """Get the minimum salary of all jobs """
+    returned_list_of_jobs = read(path)
+    set_of_min_salary = set()
+    list_converted_from_set = []
 
+    for salary in returned_list_of_jobs:
+        if (salary['min_salary'] != 'invalid' and salary['min_salary'] != ''):
+            set_of_min_salary.add(int(salary['min_salary']))
+
+    list_converted_from_set.extend(set_of_min_salary)
+    return min(list_converted_from_set)
+
+    """
     Must call `read`
 
     Parameters
