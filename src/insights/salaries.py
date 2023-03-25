@@ -70,18 +70,18 @@ def filter_by_salary_range(
     jobs: List[dict],
     salary: Union[str, int]
 ) -> List[Dict]:
-    """Filters a list of jobs by salary range
+    """Filters a list of jobs by salary range"""
+    if (not(str(salary).isnumeric()) or salary == '' or salary is None):
+        return []
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
+    returns_a_filter_of_selected_salaries = []
 
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    raise NotImplementedError
+    for value in jobs:
+        min_salary = value['min_salary']
+        max_salary = value['max_salary']
+        if (min_salary != '' and max_salary != ''):
+            if (int(min_salary) <= int(salary) <= int(max_salary)):
+                returns_a_filter_of_selected_salaries.append(value)
+    return returns_a_filter_of_selected_salaries
+
+    # raise NotImplementedError
